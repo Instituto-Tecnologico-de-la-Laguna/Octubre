@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Octubre.Data
             {
                 NpgsqlConnection connection =
                     new NpgsqlConnection(connectionString);
+
                 connection.Open();
                 return connection;
             }
@@ -29,6 +31,21 @@ namespace Octubre.Data
             }
         }
 
+        public DataSet getAllData(string command)
+        {
+            DataSet dataSet = new DataSet();
+            try {
+                NpgsqlDataAdapter da = new  NpgsqlDataAdapter(command, GetConnection());
+                da.Fill(dataSet);
+                return dataSet;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los datos: " + ex.Message);
+                return null;
+            }
+        }
         public bool ExecuteQuery(string query)
         {
             try {
