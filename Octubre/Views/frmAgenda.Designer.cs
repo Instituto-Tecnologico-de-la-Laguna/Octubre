@@ -32,8 +32,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtPaterno = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMaterno = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rtbDireccion = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,26 +72,10 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "A. Paterno";
             // 
-            // txtMaterno
-            // 
-            this.txtMaterno.Location = new System.Drawing.Point(34, 183);
-            this.txtMaterno.Name = "txtMaterno";
-            this.txtMaterno.Size = new System.Drawing.Size(264, 26);
-            this.txtMaterno.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 160);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "A. Materno";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 226);
+            this.label4.Location = new System.Drawing.Point(38, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 20);
             this.label4.TabIndex = 7;
@@ -101,7 +83,7 @@
             // 
             // rtbDireccion
             // 
-            this.rtbDireccion.Location = new System.Drawing.Point(34, 249);
+            this.rtbDireccion.Location = new System.Drawing.Point(34, 178);
             this.rtbDireccion.Name = "rtbDireccion";
             this.rtbDireccion.Size = new System.Drawing.Size(264, 110);
             this.rtbDireccion.TabIndex = 8;
@@ -110,7 +92,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 378);
+            this.label5.Location = new System.Drawing.Point(38, 308);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 20);
             this.label5.TabIndex = 9;
@@ -118,7 +100,7 @@
             // 
             // mtbTelefono
             // 
-            this.mtbTelefono.Location = new System.Drawing.Point(34, 401);
+            this.mtbTelefono.Location = new System.Drawing.Point(38, 331);
             this.mtbTelefono.Mask = "(999)000-0000";
             this.mtbTelefono.Name = "mtbTelefono";
             this.mtbTelefono.Size = new System.Drawing.Size(147, 26);
@@ -126,7 +108,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(34, 447);
+            this.btnAgregar.Location = new System.Drawing.Point(38, 377);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 53);
             this.btnAgregar.TabIndex = 11;
@@ -136,26 +118,25 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(187, 447);
+            this.btnCancelar.Location = new System.Drawing.Point(191, 377);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(103, 53);
             this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 536);
+            this.ClientSize = new System.Drawing.Size(346, 452);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.mtbTelefono);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.rtbDireccion);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtMaterno);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPaterno);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
@@ -172,8 +153,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtPaterno;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMaterno;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox rtbDireccion;
         private System.Windows.Forms.Label label5;

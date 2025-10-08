@@ -22,7 +22,7 @@ namespace Octubre.Views
         private void frmPersonas_Load(object sender, EventArgs e)
         {
             DataSet ds= datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
-                " apaterno as \"A. Paterno\", amaterno as \"A. Materno\"," +
+                " apaterno as \"A. Paterno\", " +
                 "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda");
             if (ds != null)
             {
@@ -39,7 +39,7 @@ namespace Octubre.Views
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
-                            " apaterno as \"A. Paterno\", amaterno as \"A. Materno\"," +
+                            " apaterno as \"A. Paterno\"," +
                             "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda" +
                             " Where Nombre like '" + txtBuscar.Text + "%'");
             if (ds != null)
@@ -51,6 +51,15 @@ namespace Octubre.Views
                 MessageBox.Show("Error al cargar los datos.", "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+       
+        private void toolStripEditar_Click(object sender, EventArgs e)
+        {
+            string r=dgvAgenda[0, 
+                dgvAgenda.CurrentCell.RowIndex].Value.ToString();
+            frmAgenda frm = new frmAgenda(Convert.ToInt32(r));
+            frm.ShowDialog();
         }
     }
 }

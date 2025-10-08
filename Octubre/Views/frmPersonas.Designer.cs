@@ -28,22 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvAgenda = new System.Windows.Forms.DataGridView();
+            this.cmsDatos = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripEditar = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
+            this.cmsDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvAgenda
             // 
             this.dgvAgenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAgenda.ContextMenuStrip = this.cmsDatos;
             this.dgvAgenda.Location = new System.Drawing.Point(12, 96);
             this.dgvAgenda.Name = "dgvAgenda";
             this.dgvAgenda.RowHeadersWidth = 62;
             this.dgvAgenda.RowTemplate.Height = 28;
-            this.dgvAgenda.Size = new System.Drawing.Size(887, 443);
+            this.dgvAgenda.Size = new System.Drawing.Size(1352, 443);
             this.dgvAgenda.TabIndex = 0;
+            // 
+            // cmsDatos
+            // 
+            this.cmsDatos.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.cmsDatos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripEditar,
+            this.toolStripEliminar});
+            this.cmsDatos.Name = "contextMenuStrip1";
+            this.cmsDatos.Size = new System.Drawing.Size(241, 101);
+
+            // 
+            // toolStripEditar
+            // 
+            this.toolStripEditar.Name = "toolStripEditar";
+            this.toolStripEditar.Size = new System.Drawing.Size(240, 32);
+            this.toolStripEditar.Text = "Editar";
+            this.toolStripEditar.Click += new System.EventHandler(this.toolStripEditar_Click);
+            // 
+            // toolStripEliminar
+            // 
+            this.toolStripEliminar.Name = "toolStripEliminar";
+            this.toolStripEliminar.Size = new System.Drawing.Size(240, 32);
+            this.toolStripEliminar.Text = "Eliminar";
             // 
             // txtBuscar
             // 
@@ -66,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 551);
+            this.ClientSize = new System.Drawing.Size(1376, 551);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgvAgenda);
@@ -74,6 +103,7 @@
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.frmPersonas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).EndInit();
+            this.cmsDatos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,5 +114,8 @@
         private System.Windows.Forms.DataGridView dgvAgenda;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip cmsDatos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripEditar;
+        private System.Windows.Forms.ToolStripMenuItem toolStripEliminar;
     }
 }
