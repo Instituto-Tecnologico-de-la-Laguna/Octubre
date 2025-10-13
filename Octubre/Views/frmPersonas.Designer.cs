@@ -59,7 +59,6 @@
             this.toolStripEliminar});
             this.cmsDatos.Name = "contextMenuStrip1";
             this.cmsDatos.Size = new System.Drawing.Size(241, 101);
-
             // 
             // toolStripEditar
             // 
@@ -73,6 +72,7 @@
             this.toolStripEliminar.Name = "toolStripEliminar";
             this.toolStripEliminar.Size = new System.Drawing.Size(240, 32);
             this.toolStripEliminar.Text = "Eliminar";
+            this.toolStripEliminar.Click += new System.EventHandler(this.toolStripEliminar_Click);
             // 
             // txtBuscar
             // 
@@ -101,6 +101,7 @@
             this.Controls.Add(this.dgvAgenda);
             this.Name = "frmPersonas";
             this.Text = "Agenda";
+            this.Activated += new System.EventHandler(this.frmPersonas_Activated);
             this.Load += new System.EventHandler(this.frmPersonas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).EndInit();
             this.cmsDatos.ResumeLayout(false);

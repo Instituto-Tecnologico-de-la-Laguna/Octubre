@@ -21,21 +21,23 @@ namespace Octubre.Views
 
         private void frmPersonas_Load(object sender, EventArgs e)
         {
-            DataSet ds= datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
+            mostrarDatos();
+        }
+        private void mostrarDatos()
+        {
+            DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
                 " apaterno as \"A. Paterno\", " +
-                "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda");
+                "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda Order By id");
             if (ds != null)
             {
                 dgvAgenda.DataSource = ds.Tables[0];
             }
             else
             {
-                MessageBox.Show("Error al cargar los datos.","Sistema",
-                    MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los datos.", "Sistema",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
@@ -60,6 +62,33 @@ namespace Octubre.Views
                 dgvAgenda.CurrentCell.RowIndex].Value.ToString();
             frmAgenda frm = new frmAgenda(Convert.ToInt32(r));
             frm.ShowDialog();
+        }
+
+        private void frmPersonas_Activated(object sender, EventArgs e)
+        {
+            mostrarDatos();
+        }
+
+        private void toolStripEliminar_Click(object sender, EventArgs e)
+        {
+            string r = dgvAgenda[0,
+                dgvAgenda.CurrentCell.RowIndex].Value.ToString();
+            if (MessageBox.Show("Deseas Eliminar el Registro", "Sistema",
+                MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK) 
+            { 
+                bool s=datos.ExecuteQuery("DELETE FROM agenda WHERE id=" + r);
+                if (s)
+                {
+                    MessageBox.Show("Registro Eliminado", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mostrarDatos();
+                }
+                else
+                {
+                    MessageBox.Show("Error al Eliminar el Registro", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Octubre.Views
     public partial class frmAgenda : Form
     {
 
-        int id = 0;
+        int id = -1;
         public frmAgenda()
         {
             InitializeComponent();
@@ -30,31 +30,53 @@ namespace Octubre.Views
             mtbTelefono.Text = ds.Tables[0].Rows[0]["telefono"].ToString();
             this.id = id;
             btnAgregar.Text = "Actualizar";
-
         }
-
-      
-
        
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+
             bool resultado;
             Datos data= new Datos();
-            string query = "INSERT INTO agenda(nombre,apaterno,amaterno," +
-                "direccion,telefono)Values('" + txtNombre.Text + "','" +
-                txtPaterno.Text + "','" +
-                rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
-            resultado=data.ExecuteQuery(query);
-            if (resultado)
+
+            if (id == -1)
             {
-                MessageBox.Show("Registro agregado","Siste",
-                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+                string query = "INSERT INTO agenda(nombre,apaterno,amaterno," +
+                    "direccion,telefono)Values('" + txtNombre.Text + "','" +
+                    txtPaterno.Text + "','" +
+                    rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
+                resultado = data.ExecuteQuery(query);
+                if (resultado)
+                {
+                    MessageBox.Show("Registro agregado", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar el registro", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
-            {
-                MessageBox.Show("Error al agregar el registro","Sistema",
-                    MessageBoxButtons.OK ,MessageBoxIcon.Error );
+            { 
+                string query = "UPDATE agenda SET nombre='" + txtNombre.Text +
+                    "',apaterno='" + txtPaterno.Text +
+                    "',direccion='" + rtbDireccion.Text +
+                    "',telefono='" + mtbTelefono.Text +
+                    "' WHERE id=" + id;
+                resultado = data.ExecuteQuery(query);
+                if (resultado)
+                {
+                    MessageBox.Show("Registro actualizado", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar el registro", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
